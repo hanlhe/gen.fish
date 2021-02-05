@@ -1,7 +1,10 @@
 function fish_greeting
-    if type -q neofetch
+    set ttyc (tty)
+    if string match -q -- "*0" $ttyc; and type -q neofetch
         neofetch
-    else if type -q fortune
+        return 0
+    end
+    if type -q fortune
         fortune
     end
 end
